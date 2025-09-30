@@ -6,12 +6,12 @@ from robodk.robolink import *
 from robodk.robomath import *
 
 # Define relative path to the .rdk file
-relative_path = "src/roboDK/Assistive_UR5e.rdk"
-absolute_path = os.path.abspath(relative_path)
+#relative_path = "src/roboDK/Assistive_UR5e.rdk"
+#absolute_path = os.path.abspath(relative_path)
 
 # Start RoboDK with the project file
 RDK = Robolink()
-RDK.AddFile(absolute_path)
+#RDK.AddFile(absolute_path)
 
 # Retrieve items from the RoboDK station
 robot = RDK.Item("UR5e")
@@ -31,36 +31,18 @@ robot.setPoseFrame(base)
 robot.setPoseTool(tool)
 robot.setSpeed(20)
 
-# Move to initial position
-def move_to_init():
-    print("Init")
-    robot.MoveL(Init_target, True)
-    print("Init_target REACHED")
 
-# Perform handshake sequence
-def hand_shake():
-    print("Hand Shake")
-    robot.MoveL(App_shake_target, True)
-    robot.MoveL(Shake_target, True)
-    robot.MoveL(App_shake_target, True)
-    print("Hand Shake FINISHED")
-
-# Perform "Give me 5" sequence
-def give_me_5():
-    print("Give me 5!")
-    robot.MoveL(App_give5_target, True)
-    robot.MoveL(Give5_target, True)
-    robot.MoveL(App_give5_target, True)
-    print("Give me 5! FINISHED")
     
 # Perform "Hi" sequence
 def say_hi():
     print("Saying Hi!")
+    robot.setSpeed(50)
     robot.MoveL(Init_hi_target, True)
     robot.MoveL(Hi_right_target, True)
     robot.MoveL(Hi_left_target, True)
     robot.MoveL(Hi_right_target, True)
     robot.MoveL(Hi_left_target, True)
+    robot.MoveL(Init_hi_target, True)
     print("Saying Hi! FINISHED")
 
 # Main sequence

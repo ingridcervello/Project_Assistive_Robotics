@@ -18,9 +18,9 @@ robot = RDK.Item("UR5e")
 base = RDK.Item("UR5e Base")
 tool = RDK.Item('Hand')
 Init_target = RDK.Item('Init')
-Init_hi = RDK.Item('Init_hi')
-Hi_right = RDK.Item('Hi_right')
-Hi_left = RDK.Item('Hi_left')
+Init_hi_target = RDK.Item("Init_hi")
+Hi_left_target = RDK.Item("Hi_left")
+Hi_right_target = RDK.Item("Hi_right")
 
 # Set robot frame, tool and speed
 robot.setPoseFrame(base)
@@ -53,13 +53,12 @@ def move_to_init():
 def hi():
     print("Hi!")
     robot.setSpeed(50)
-    robot.MoveL(Init_hi, True)
-    robot.setSpeed(100)
-    robot.MoveL(Hi_left, True)
-    robot.MoveL(Hi_right, True)
-    robot.MoveL(Hi_left, True)
-    robot.MoveL(Hi_right, True)
-    robot.MoveL(Init_hi)
+    robot.MoveL(Init_hi_target, True)
+    robot.MoveL(Hi_right_target, True)
+    robot.MoveL(Hi_left_target, True)
+    robot.MoveL(Hi_right_target, True)
+    robot.MoveL(Hi_left_target, True)
+    robot.MoveL(Init_hi_target, True)
 
 # Confirmation dialog to close RoboDK
 def confirm_close():
@@ -87,4 +86,4 @@ def main():
 if __name__ == "__main__":
     main()
     #confirm_close()
-    
+
