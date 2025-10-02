@@ -25,6 +25,9 @@ Give5_target = RDK.Item("Give5")
 Init_hi_target = RDK.Item("Init_hi")
 Hi_left_target = RDK.Item("Hi_left")
 Hi_right_target = RDK.Item("Hi_right")
+Init_dj_target = RDK.Item("Init_dj")
+Dj_right_target = RDK.Item("Dj_right")
+Dj_left_target = RDK.Item("Dj_left")
 
 # Set robot frame, tool and speed
 robot.setPoseFrame(base)
@@ -44,10 +47,22 @@ def say_hi():
     robot.MoveL(Hi_left_target, True)
     robot.MoveL(Init_hi_target, True)
     print("Saying Hi! FINISHED")
+    
+def dj():
+    print("DJ!")
+    robot.setSpeed(50)
+    robot.MoveL(Init_hi_target, True)
+    robot.MoveL(Hi_right_target, True)
+    robot.MoveL(Hi_left_target, True)
+    robot.MoveL(Hi_right_target, True)
+    robot.MoveL(Hi_left_target, True)
+    robot.MoveL(Init_hi_target, True)
+    print("DJ! FINISHED")
 
 # Main sequence
 def main():
     say_hi()
+    dj()
 
 # Confirmation dialog to close RoboDK
 def confirm_close():
