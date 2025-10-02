@@ -106,7 +106,7 @@ def Init():
 
 def hi():
     print("Hi!")
-    robot.setSpeed(50)
+    robot.setSpeed(20)
     robot.MoveL(Init_hi_target, True)
     robot.MoveL(Hi_right_target, True)
     robot.MoveL(Hi_left_target, True)
@@ -127,6 +127,31 @@ def hi():
         send_ur_script(movel_hi_right)
         receive_response(timel)
         send_ur_script(movel_hi_left)
+        receive_response(timel)
+        
+def dj():
+    print("DJ")
+    robot.setSpeed(50)
+    robot.MoveL(Init_dj_target, True)
+    robot.MoveL(Dj_right_target, True)
+    robot.MoveL(Dj_left_target, True)
+    robot.MoveL(Dj_right_target, True)
+    robot.MoveL(Dj_left_target, True)
+    robot.MoveL(Init_dj_target, True)
+    print("DJ FINISHED")
+    if robot_is_connected:
+        print("App_dj REAL UR5e")
+        send_ur_script(set_tcp)
+        receive_response(1)
+        send_ur_script(movej_init_dj)
+        receive_response(timel)
+        send_ur_script(movel_dj_right)
+        receive_response(timel)
+        send_ur_script(movel_dj_left)
+        receive_response(timel)
+        send_ur_script(movel_dj_right)
+        receive_response(timel)
+        send_ur_script(movel_dj_left)
         receive_response(timel)
 
 # Confirmation dialog to close RoboDK
@@ -151,6 +176,7 @@ def main():
     global robot_is_connected
     robot_is_connected = check_robot_port(ROBOT_IP, ROBOT_PORT)
     hi()
+    dj()
     if robot_is_connected:
         robot_socket.close()
 
