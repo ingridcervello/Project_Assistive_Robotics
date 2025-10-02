@@ -24,7 +24,7 @@ Hi_left_target = RDK.Item("Hi_left")
 Hi_right_target = RDK.Item("Hi_right")
 Init_dj_target = RDK.Item("Init_dj") 
 Dj_left_target = RDK.Item("Dj_left")
-Dj_right_target = RDK.Item("Dj_right")
+Dj_right_target = RDK.Item("")
 
 robot.setPoseFrame(base)
 robot.setPoseTool(tool)
