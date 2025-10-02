@@ -22,7 +22,7 @@ Init_hi_target = RDK.Item("Init_hi")
 Hi_left_target = RDK.Item("Hi_left")
 Hi_right_target = RDK.Item("Hi_right")
 Init_dj_target = RDK.Item("Init_dj")
-Dj_right_target = RDK.Item("Dj_target")
+Dj_right_target = RDK.Item("Dj_right")
 Dj_left_target = RDK.Item("Dj_left")
 
 # Set robot frame, tool and speed
@@ -55,7 +55,7 @@ def move_to_init():
 
 def hi():
     print("Hi!")
-    robot.setSpeed(50)
+    robot.setSpeed(20)
     robot.MoveL(Init_hi_target, True)
     robot.MoveL(Hi_right_target, True)
     robot.MoveL(Hi_left_target, True)

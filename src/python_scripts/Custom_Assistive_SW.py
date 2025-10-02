@@ -39,7 +39,7 @@ robot.setSpeed(20)
 # Perform "Hi" sequence
 def say_hi():
     print("Saying Hi!")
-    robot.setSpeed(50)
+    robot.setSpeed(20)
     robot.MoveL(Init_dj_target, True)
     robot.MoveL(Hi_right_target, True)
     robot.MoveL(Hi_left_target, True)
