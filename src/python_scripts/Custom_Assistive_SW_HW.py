@@ -21,6 +21,9 @@ Init_target = RDK.Item('Init')
 Init_hi_target = RDK.Item("Init_hi")
 Hi_left_target = RDK.Item("Hi_left")
 Hi_right_target = RDK.Item("Hi_right")
+Init_dj_target = RDK.Item("Init_dj")
+Dj_right_target = RDK.Item("Dj_target")
+Dj_left_target = RDK.Item("Dj_left")
 
 # Set robot frame, tool and speed
 robot.setPoseFrame(base)
@@ -60,6 +63,16 @@ def hi():
     robot.MoveL(Hi_left_target, True)
     robot.MoveL(Init_hi_target, True)
 
+def dj():
+    print("DJ")
+    robot.setSpeed(50)
+    robot.MoveL(Init_dj_target, True)
+    robot.MoveL(Dj_right_target, True)
+    robot.MoveL(Dj_left_target, True)
+    robot.MoveL(Dj_right_target, True)
+    robot.MoveL(Dj_left_target, True)
+    robot.MoveL(Init_dj_target, True)
+
 # Confirmation dialog to close RoboDK
 def confirm_close():
     root = tk.Tk()
@@ -81,6 +94,7 @@ def confirm_close():
 def main():
     robot_online(False)  # True for real robot, False for simulation
     hi()
+    dj()
 
 # Run main and handle closing
 if __name__ == "__main__":
