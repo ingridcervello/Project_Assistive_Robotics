@@ -40,7 +40,7 @@ robot.setSpeed(20)
 def say_hi():
     print("Saying Hi!")
     robot.setSpeed(50)
-    robot.MoveL(Init_hi_target, True)
+    robot.MoveL(Init_dj_target, True)
     robot.MoveL(Hi_right_target, True)
     robot.MoveL(Hi_left_target, True)
     robot.MoveL(Hi_right_target, True)
@@ -51,12 +51,12 @@ def say_hi():
 def dj():
     print("DJ!")
     robot.setSpeed(50)
-    robot.MoveL(Init_hi_target, True)
-    robot.MoveL(Hi_right_target, True)
-    robot.MoveL(Hi_left_target, True)
-    robot.MoveL(Hi_right_target, True)
-    robot.MoveL(Hi_left_target, True)
-    robot.MoveL(Init_hi_target, True)
+    robot.MoveL(Init_dj_target, True)
+    robot.MoveL(Dj_right_target, True)
+    robot.MoveL(Dj_left_target, True)
+    robot.MoveL(Dj_right_target, True)
+    robot.MoveL(Dj_left_target, True)
+    robot.MoveL(Init_dj_target, True)
     print("DJ! FINISHED")
 
 # Main sequence
