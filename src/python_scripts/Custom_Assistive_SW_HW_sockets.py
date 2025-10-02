@@ -12,7 +12,7 @@ from robodk.robomath import *
 relative_path = "src/roboDK/Assistive_UR5e.rdk"
 absolute_path = os.path.abspath(relative_path)
 RDK = Robolink()
-RDK.AddFile(absolute_path)
+#RDK.AddFile(absolute_path)
 
 # Robot setup
 robot = RDK.Item("UR5e")
@@ -53,13 +53,18 @@ j1, j2, j3, j4, j5, j6 = list(np.radians(Init_target.Joints()).tolist()[0])
 movej_init = f"movej([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_ms},{time_high},{blend_r})"
 #Init_hi
 j1, j2, j3, j4, j5, j6 = list(np.radians(Init_hi_target.Joints()).tolist()[0])
-movej_init_hi = f"movej([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_ms},{time_high},{blend_r})"
+movej_init_hi = f"movel([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_ms},{time_high},{blend_r})"
 #Hi_right
-X, Y, Z, Roll, Pitch, Yaw = Pose_2_TxyzRxyz(Hi_right_target.Pose())
-movel_hi_right = f"movel(p[{X}, {Y}, {Z}, {Roll}, {Pitch}, {Yaw}], a={accel_mss}, v={speed_ms}, t={timel}, r={blend_r})"
+j1, j2, j3, j4, j5, j6 = list(np.radians(Hi_right_target.Joints()).tolist()[0])
+#X, Y, Z, Roll, Pitch, Yaw = Pose_2_TxyzRxyz(Hi_right_target.Pose())
+#movel_hi_right = f"movel(p[{X}, {Y}, {Z}, {Roll}, {Pitch}, {Yaw}], a={accel_mss}, v={speed_ms}, t={timel}, r={blend_r})"
+movel_hi_right = f"movel([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_ms},{time_high},{blend_r})"
+
 #Hi_left
-X, Y, Z, Roll, Pitch, Yaw = Pose_2_TxyzRxyz(Hi_left_target.Pose())
-movel_hi_left = f"movel(p[{X}, {Y}, {Z}, {Roll}, {Pitch}, {Yaw}], a={accel_mss}, v={speed_ms}, t={timel}, r={blend_r})"
+j1, j2, j3, j4, j5, j6 = list(np.radians(Hi_left_target.Joints()).tolist()[0])
+#X, Y, Z, Roll, Pitch, Yaw = Pose_2_TxyzRxyz(Hi_left_target.Pose())
+#movel_hi_left = f"movel(p[{X}, {Y}, {Z}, {Roll}, {Pitch}, {Yaw}], a={accel_mss}, v={speed_ms}, t={timel}, r={blend_r})"
+movel_hi_left = f"movel([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_ms},{time_high},{blend_r})"
 
 #Init_dj
 j1, j2, j3, j4, j5, j6 = list(np.radians(Init_dj_target.Joints()).tolist()[0])
@@ -176,7 +181,7 @@ def main():
     global robot_is_connected
     robot_is_connected = check_robot_port(ROBOT_IP, ROBOT_PORT)
     hi()
-    dj()
+    #dj()
     if robot_is_connected:
         robot_socket.close()
 
