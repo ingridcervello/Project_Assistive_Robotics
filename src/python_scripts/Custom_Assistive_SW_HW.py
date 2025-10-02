@@ -55,7 +55,7 @@ def move_to_init():
 
 def hi():
     print("Hi!")
-    robot.setSpeed(50)
+    robot.setSpeed(20)
     robot.MoveL(Init_hi_target, True)
     robot.MoveL(Hi_right_target, True)
     robot.MoveL(Hi_left_target, True)
@@ -65,7 +65,7 @@ def hi():
 
 def dj():
     print("DJ")
-    robot.setSpeed(200)
+    robot.setSpeed(50)
     robot.MoveL(Init_dj_target, True)
     robot.MoveL(Dj_right_target, True)
     robot.MoveL(Dj_left_target, True)
