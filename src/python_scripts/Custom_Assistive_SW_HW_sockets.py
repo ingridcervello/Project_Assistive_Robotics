@@ -69,13 +69,18 @@ movel_hi_left = f"movel([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_m
 #Init_dj
 j1, j2, j3, j4, j5, j6 = list(np.radians(Init_dj_target.Joints()).tolist()[0])
 movej_init_dj = f"movej([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_ms},{time_high},{blend_r})"
-#Dj_right
-X, Y, Z, Roll, Pitch, Yaw = Pose_2_TxyzRxyz(Dj_right_target.Pose())
-movel_dj_right = f"movel(p[{X}, {Y}, {Z}, {Roll}, {Pitch}, {Yaw}], a={accel_mss}, v={speed_ms}, t={timel}, r={blend_r})"
-#Dj_left
-X, Y, Z, Roll, Pitch, Yaw = Pose_2_TxyzRxyz(Dj_left_target.Pose())
-movel_dj_left = f"movel(p[{X}, {Y}, {Z}, {Roll}, {Pitch}, {Yaw}], a={accel_mss}, v={speed_ms}, t={timel}, r={blend_r})"
 
+#Dj_right
+#X, Y, Z, Roll, Pitch, Yaw = Pose_2_TxyzRxyz(Dj_right_target.Pose())
+#movel_dj_right = f"movel(p[{X}, {Y}, {Z}, {Roll}, {Pitch}, {Yaw}], a={accel_mss}, v={speed_ms}, t={timel}, r={blend_r})"
+j1, j2, j3, j4, j5, j6 = list(np.radians(Dj_right_target.Joints()).tolist()[0])
+movel_dj_right = f"movel([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_ms},{time_high},{blend_r}]º)"
+
+#Dj_left
+#X, Y, Z, Roll, Pitch, Yaw = Pose_2_TxyzRxyz(Dj_left_target.Pose())
+#movel_dj_left = f"movel(p[{X}, {Y}, {Z}, {Roll}, {Pitch}, {Yaw}], a={accel_mss}, v={speed_ms}, t={timel}, r={blend_r})"
+j1, j2, j3, j4, j5, j6 = list(np.radians(   Dj_left_target.Joints()).tolist()[0])
+movel_dj_left = f"movel([{j1},{j2}, {j3}, {j4}, {j5}, {j6}],{accel_mss},{speed_ms},{time_high},{blend_r})"
 
 # Check robot connection
 def check_robot_port(ip, port):
