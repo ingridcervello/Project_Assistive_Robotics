@@ -5,13 +5,17 @@ from tkinter import messagebox
 from robodk.robolink import *
 from robodk.robomath import *
 
-# Define relative path to the .rdk file
-#relative_path = "src/roboDK/Assistive_UR5e.rdk"
-#absolute_path = os.path.abspath(relative_path)
-
-# Start RoboDK with the project file
+# Define the relative and absolute path to the RoboDK project file
+relative_path = "src/roboDK/Custom_Assistive_UR5e.rdk"
+absolute_path = os.path.abspath(relative_path)
+# Launch RoboDK and load the project
+print("Opening roboDK")
 RDK = Robolink()
-#RDK.AddFile(absolute_path)
+time.sleep(3) # Wait for RoboDK to be ready and avoid Pop-up for license limitation appears
+print('Opening project')
+RDK.AddFile(absolute_path)
+time.sleep(1) # Not needed but proper solution
+# Get the Items and setup
 
 # Retrieve items from the RoboDK station
 robot = RDK.Item("UR5e")
