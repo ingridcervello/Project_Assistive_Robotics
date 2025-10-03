@@ -8,11 +8,17 @@ import numpy as np
 from robodk.robolink import *
 from robodk.robomath import *
 
-# Load RoboDK project from relative path
-relative_path = "src/roboDK/Assistive_UR5e.rdk"
+# Define the relative and absolute path to the RoboDK project file
+relative_path = "src/roboDK/Custom_Assistive_UR5e.rdk"
 absolute_path = os.path.abspath(relative_path)
+# Launch RoboDK and load the project
+print("Opening roboDK")
 RDK = Robolink()
-#RDK.AddFile(absolute_path)
+time.sleep(3) # Wait for RoboDK to be ready and avoid Pop-up for license limitation appears
+print('Opening project')
+RDK.AddFile(absolute_path)
+time.sleep(1) # Not needed but proper solution
+# Get the Items and setup
 
 # Robot setup
 robot = RDK.Item("UR5e")
@@ -186,7 +192,7 @@ def main():
     global robot_is_connected
     robot_is_connected = check_robot_port(ROBOT_IP, ROBOT_PORT)
     hi()
-    #dj()
+    dj()
     if robot_is_connected:
         robot_socket.close()
 
